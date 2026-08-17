@@ -112,6 +112,7 @@ func (bs *BookingService) ConfirmBooking(bookingID domain.BookingID) (*domain.Bo
 	if err := bs.acquireLock(lockKeyBooking(bookingID), domain.RoleBookingSpecialist); err != nil {
 		return nil, err
 	}
+	defer bs.releaseLock(lockKeyBooking(bookingID))
 
 	bs.Store.Lock()
 	defer bs.Store.Unlock()
