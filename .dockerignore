@@ -1,0 +1,7 @@
+.git
+.gitignore
+*_test.go
+Dockerfile
+.dockerignore
+README.md
+Makefile
